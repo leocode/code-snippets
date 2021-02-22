@@ -8,4 +8,20 @@ describe('deepUnwind', () => {
 
     expect(result).toEqual(expected);
   });
+
+  it('should work without any nested items', () => {
+    const array = [{ name: 'A', children: [] }];
+    const expected = [{ name: 'A' }];
+    const result = deepUnwind(array, 'children');
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should work without required prop at all', () => {
+    const array = [{ name: 'A' }];
+    const expected = [{ name: 'A' }];
+    const result = deepUnwind(array as any, 'children');
+
+    expect(result).toEqual(expected);
+  });
 });
