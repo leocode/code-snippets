@@ -25,7 +25,6 @@ const defaultOptions: Options = {
 export const deepUnwind: DeepUnwind = (originalArray, originalByProp, originalOptions: Options = {}) => {
   const options = Object.assign(defaultOptions, originalOptions);
 
-  // Infinite object verification
   if (options.verifyInfiniteRecursion) {
     try {
       const _ = JSON.stringify(originalArray);
