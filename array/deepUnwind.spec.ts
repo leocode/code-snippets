@@ -25,10 +25,17 @@ describe('deepUnwind', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should crash on infinite structure', () => {
+  it('should crash with domain error on infinite structure', () => {
     const array = [{ name: 'A', children: [] }];
     array[0].children = array;
   
     expect(() => deepUnwind(array as any, 'children')).toThrow(/Cannot unwind circular structure/);
+  });
+
+  it('should crash with node error, after disabling infinite verification', () => {
+    const array = [{ name: 'A', children: [] }];
+    array[0].children = array;
+  
+    expect(() => deepUnwind(array as any, 'children', { verifyInfiniteRecursion: false })).toThrow(/Maximum call stack size exceeded/);
   });
 });
