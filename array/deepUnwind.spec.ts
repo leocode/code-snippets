@@ -26,7 +26,7 @@ describe('deepUnwind', () => {
   });
 
   it('should crash with domain error on infinite structure', () => {
-    const array = [{ name: 'A', children: [] }] as any;
+    const array = [{ name: 'A', children: [] }];
     array[0].children = array;
   
     expect(() => deepUnwind(array as any, 'children')).toThrow(/Cannot unwind circular structure/);
