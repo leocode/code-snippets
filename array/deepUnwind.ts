@@ -34,7 +34,8 @@ export const deepUnwind: DeepUnwind = (originalArray, originalByProp, originalOp
   }
 
   const process: DeepUnwind = (array, byProp) => {
-    const result = [];
+    // types are handled by function typing, so it doesn't matter here
+    const result: any[] = [];
 
     array.forEach(entry => {
       result.push(omit(entry, byProp), ...process(entry[byProp] ?? [], byProp));
