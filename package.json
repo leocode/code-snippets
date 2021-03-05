@@ -1,4 +1,6 @@
 {
+  "version": "1.0.0",
+  "name": "@leocode/code-snippets",
   "scripts": {
     "test": "jest",
     "build": "rollup -c rollup.config.js"
